@@ -8,6 +8,7 @@ import rtg.api.biome.BiomeConfig;
 import rtg.api.biome.BiomeConfigProperty;
 import rtg.api.biome.abyssalcraft.config.*;
 import rtg.api.biome.agriculturalrevolution.config.*;
+import rtg.api.biome.appalachia.config.*;
 import rtg.api.biome.betteragriculture.config.BiomeConfigBA;
 import rtg.api.biome.betteragriculture.config.BiomeConfigBAFarmlandBiome;
 import rtg.api.biome.biomesoplenty.config.*;
@@ -25,6 +26,7 @@ public class BiomeConfigManager {
     public static void initBiomeConfigs() {
 
         initBiomeConfigsAC();
+        initBiomeConfigsAPL();
         initBiomeConfigsAR();
         initBiomeConfigsBA();
         initBiomeConfigsBOP();
@@ -43,6 +45,16 @@ public class BiomeConfigManager {
         BiomeConfigAC.biomeConfigACDarklandsHighland = new BiomeConfigACDarklandsHighland();
         BiomeConfigAC.biomeConfigACDarklandsMountains = new BiomeConfigACDarklandsMountains();
         BiomeConfigAC.biomeConfigACDarklandsPlains = new BiomeConfigACDarklandsPlains();
+    }
+
+    public static void initBiomeConfigsAPL() {
+
+        BiomeConfigAPL.biomeConfigAPLAppalachianMountains = new BiomeConfigAPLAppalachianMountains();
+        BiomeConfigAPL.biomeConfigAPLAutumnBlueRidgeForest = new BiomeConfigAPLAutumnBlueRidgeForest();
+        BiomeConfigAPL.biomeConfigAPLBlueRidgeForest = new BiomeConfigAPLBlueRidgeForest();
+        BiomeConfigAPL.biomeConfigAPLBlueRidgeMountains = new BiomeConfigAPLBlueRidgeMountains();
+        BiomeConfigAPL.biomeConfigAPLPrairie = new BiomeConfigAPLPrairie();
+        BiomeConfigAPL.biomeConfigAPLSmokyMountains = new BiomeConfigAPLSmokyMountains();
     }
 
     public static void initBiomeConfigsAR() {

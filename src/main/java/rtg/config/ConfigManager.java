@@ -4,6 +4,7 @@ import java.io.File;
 
 import rtg.config.abyssalcraft.ConfigAC;
 import rtg.config.agriculturalrevolution.ConfigAR;
+import rtg.config.appalachia.ConfigAPL;
 import rtg.config.betteragriculture.ConfigBA;
 import rtg.config.biomesoplenty.ConfigBOP;
 import rtg.config.biomesyougo.ConfigBYG;
@@ -18,6 +19,7 @@ public class ConfigManager {
     public static File rtgConfigFile;
     public static File vanillaConfigFile;
     public static File acConfigFile;
+    public static File aplConfigFile;
     public static File arConfigFile;
     public static File baConfigFile;
     public static File bopConfigFile;
@@ -33,6 +35,7 @@ public class ConfigManager {
         rtgConfigFile = new File(configpath + "rtg.cfg");
         vanillaConfigFile = new File(configpath + "biomes/vanilla.cfg");
         acConfigFile = new File(configpath + "biomes/abyssalcraft.cfg");
+        aplConfigFile = new File(configpath + "biomes/appalachia.cfg");
         arConfigFile = new File(configpath + "biomes/agriculturalrevolution.cfg");
         baConfigFile = new File(configpath + "biomes/betteragriculture.cfg");
         bopConfigFile = new File(configpath + "biomes/biomesoplenty.cfg");
@@ -46,6 +49,7 @@ public class ConfigManager {
         ConfigVanilla.init(vanillaConfigFile);
 
         ConfigAC.init(acConfigFile);
+        ConfigAPL.init(aplConfigFile);
         ConfigAR.init(arConfigFile);
         ConfigBA.init(baConfigFile);
         ConfigBOP.init(bopConfigFile);
