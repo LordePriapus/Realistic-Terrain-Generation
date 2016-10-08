@@ -10,6 +10,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
 
 import rtg.api.biome.BiomeConfig;
+import rtg.api.biome.appalachia.config.BiomeConfigAPLBlueRidgeForest;
 import rtg.util.CellNoise;
 import rtg.util.CliffCalculator;
 import rtg.util.OpenSimplexNoise;
@@ -24,11 +25,11 @@ public class SurfaceAPLBlueRidgeForest extends SurfaceBase {
     private float sStrength = 65f;
     private float cCliff = 1.5f;
 
-    private IBlockState mix;
+    private IBlockState mixBlock;
     private float mixHeight;
 
     public SurfaceAPLBlueRidgeForest(BiomeConfig config, IBlockState top, IBlockState fill, float minCliff, float stoneCliff,
-                                     float stoneHeight, float stoneStrength, float clayCliff, IBlockState mixBlock, float mixSize) {
+                                     float stoneHeight, float stoneStrength, float clayCliff, IBlockState mix, float mixSize) {
 
         super(config, top, fill);
         min = minCliff;
@@ -38,7 +39,9 @@ public class SurfaceAPLBlueRidgeForest extends SurfaceBase {
         sStrength = stoneStrength;
         cCliff = clayCliff;
 
-        mix = mixBlock;
+        mixBlock = this.getConfigBlock(config, BiomeConfigAPLBlueRidgeForest.surfaceMixBlockId,
+            BiomeConfigAPLBlueRidgeForest.surfaceMixBlockMetaId,
+            mix);
         mixHeight = mixSize;
     }
 
@@ -91,7 +94,7 @@ public class SurfaceAPLBlueRidgeForest extends SurfaceBase {
                         }
                     }
                     else if (simplex.noise2(i / 12f, j / 12f) > mixHeight) {
-                        primer.setBlockState(x, k, y, mix);
+                        primer.setBlockState(x, k, y, mixBlock);
                         m = true;
                     }
                     else {
