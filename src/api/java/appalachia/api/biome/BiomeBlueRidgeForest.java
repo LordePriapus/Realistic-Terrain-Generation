@@ -11,6 +11,8 @@ import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import appalachia.api.biome.decorator.DecoratorBlueRidgeForest;
 import appalachia.api.util.Simplex;
@@ -65,19 +67,19 @@ public class BiomeBlueRidgeForest extends AppalachiaBiome implements IAppalachia
 //        return noise < -0.7D ? 0xD4DB55 : (noise < -0.3D ? 0xBBDD54 : 0xA3E053);
 //    }
 
-//    @Override
-//    @SideOnly(Side.CLIENT)
-//    public int getGrassColorAtPos(BlockPos pos) {
-//
-//        int noise = (int) (simplex.noise(pos.getX()/10, pos.getZ()/10)*9+9);
-//        return leafColours[noise];
-//    }
-//
-//    @Override
-//    @SideOnly(Side.CLIENT)
-//    public int getFoliageColorAtPos(BlockPos pos) {
-//
-//        int noise = (int) (simplex.noise(pos.getX()/10, pos.getZ()/10)*9+9);
-//        return leafColours[noise];
-//    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getGrassColorAtPos(BlockPos pos) {
+
+        double noise = GRASS_COLOR_NOISE.getValue((double)pos.getX() * 0.0225D, (double)pos.getZ() * 0.0225D);
+        return noise < -0.1D ? 0x517F51 : 0x609E58;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getFoliageColorAtPos(BlockPos pos) {
+
+        double noise = GRASS_COLOR_NOISE.getValue((double)pos.getX() * 0.0225D, (double)pos.getZ() * 0.0225D);
+        return noise < -0.1D ? 0x619961 : 0x75B569;
+    }
 }
