@@ -7,7 +7,6 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 import appalachia.api.AppalachiaBiomes;
-import appalachia.api.AppalachiaBlocks;
 import appalachia.api.world.gen.feature.tree.AppalachiaTree;
 import appalachia.api.world.gen.feature.tree.TreeAbiesGrandis;
 import appalachia.api.world.gen.feature.tree.TreeAcerRubrum;
@@ -22,9 +21,9 @@ import rtg.world.gen.feature.tree.rtg.TreeRTGPiceaSitchensis;
 import rtg.world.gen.feature.tree.rtg.TreeRTGPinusPonderosa;
 import rtg.world.gen.surface.appalachia.SurfaceAPLBlueRidgeForest;
 import rtg.world.gen.terrain.appalachia.TerrainAPLBlueRidgeForest;
+import static rtg.world.biome.deco.DecoFallenTree.LogCondition;
 import static rtg.world.biome.deco.DecoTree.TreeCondition;
 import static rtg.world.biome.deco.DecoTree.TreeType;
-import static rtg.world.biome.deco.DecoFallenTree.LogCondition;
 
 public class RealisticBiomeAPLBlueRidgeForest extends RealisticBiomeAPLBase {
 
@@ -41,7 +40,7 @@ public class RealisticBiomeAPLBlueRidgeForest extends RealisticBiomeAPLBase {
         );
 
         AppalachiaTree aplGrandFirTree = new TreeAbiesGrandis();
-        aplGrandFirTree.logBlock = AppalachiaBlocks.log_autumn_coffee.getDefaultState();
+        aplGrandFirTree.logBlock = Blocks.LOG.getDefaultState();
         aplGrandFirTree.leavesBlock = Blocks.LEAVES.getDefaultState();
         aplGrandFirTree.minTrunkSize = 10;
         aplGrandFirTree.maxTrunkSize = 20;
@@ -79,7 +78,7 @@ public class RealisticBiomeAPLBlueRidgeForest extends RealisticBiomeAPLBase {
         this.addDeco(oakMaple);
 
         TreeRTG ponderosaOakTree = new TreeRTGPinusPonderosa();
-        ponderosaOakTree.logBlock = AppalachiaBlocks.log_autumn_charcoal.getDefaultState();
+        ponderosaOakTree.logBlock = Blocks.LOG.getDefaultState();
         ponderosaOakTree.leavesBlock = Blocks.LEAVES.getDefaultState();
         ponderosaOakTree.minTrunkSize = 11;
         ponderosaOakTree.maxTrunkSize = 21;
@@ -99,7 +98,7 @@ public class RealisticBiomeAPLBlueRidgeForest extends RealisticBiomeAPLBase {
         this.addDeco(oakPines);
 
         TreeRTG sitchensisTree = new TreeRTGPiceaSitchensis();
-        sitchensisTree.logBlock = AppalachiaBlocks.log_autumn_brown.getDefaultState();
+        sitchensisTree.logBlock = Blocks.LOG.getDefaultState();
         sitchensisTree.leavesBlock = Blocks.LEAVES.getDefaultState();
         sitchensisTree.minTrunkSize = 4;
         sitchensisTree.maxTrunkSize = 10;
@@ -110,7 +109,7 @@ public class RealisticBiomeAPLBlueRidgeForest extends RealisticBiomeAPLBase {
         oakPine.strengthFactorForLoops = 3f;
         oakPine.treeType = TreeType.RTG_TREE;
         oakPine.treeCondition = TreeCondition.RANDOM_CHANCE;
-        oakPine.treeConditionChance = 4;
+        oakPine.treeConditionChance = 3;
         oakPine.maxY = treeMaxY;
         WorldGenerator vanillaTreeDefinition = new WorldGenTrees(false);
         DecoTree vanillaTrees = new DecoTree(vanillaTreeDefinition);
@@ -148,17 +147,26 @@ public class RealisticBiomeAPLBlueRidgeForest extends RealisticBiomeAPLBase {
 
         // Shrubs to fill in the blanks.
         DecoShrub decoShrubOak = new DecoShrub();
+        decoShrubOak.size = 1;
         decoShrubOak.maxY = shrubMaxY;
         decoShrubOak.strengthFactor = 8f;
         decoShrubOak.chance = 2;
         this.addDeco(decoShrubOak);
 
-        // Only 1-block tall flowers so we can see the trees better.
+        // Only 1-block-tall flowers so we can see the trees better.
+        // And only white ones because they go with everything.
         DecoFlowersRTG decoFlowersRTG = new DecoFlowersRTG();
-        decoFlowersRTG.flowers = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        decoFlowersRTG.flowers = new int[]{3, 6};
         decoFlowersRTG.maxY = shrubMaxY;
         decoFlowersRTG.strengthFactor = 6f;
         this.addDeco(decoFlowersRTG);
+
+        // Ferns.
+        DecoGrass decoFern = new DecoGrass(2);
+        decoFern.minY = 60;
+        decoFern.maxY = shrubMaxY;
+        decoFern.loops = 2;
+        this.addDeco(decoFern);
 
         // Grass filler.
         DecoGrass decoGrass = new DecoGrass();

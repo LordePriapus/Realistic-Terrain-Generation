@@ -72,7 +72,8 @@ public class BiomeBlueRidgeForest extends AppalachiaBiome implements IAppalachia
     public int getGrassColorAtPos(BlockPos pos) {
 
         double noise = GRASS_COLOR_NOISE.getValue((double)pos.getX() * 0.0225D, (double)pos.getZ() * 0.0225D);
-        return noise < -0.1D ? 0x517F51 : 0x609E58;
+        //return noise < -0.1D ? 0x9c752a : 0x967129; // Brown.
+        return noise < -0.1D ? 0x968c29 : 0x968129;
     }
 
     @Override
@@ -80,6 +81,6 @@ public class BiomeBlueRidgeForest extends AppalachiaBiome implements IAppalachia
     public int getFoliageColorAtPos(BlockPos pos) {
 
         double noise = GRASS_COLOR_NOISE.getValue((double)pos.getX() * 0.0225D, (double)pos.getZ() * 0.0225D);
-        return noise < -0.1D ? 0x619961 : 0x75B569;
+        return noise < -0.1D ? 0x968c29 : 0x968129;
     }
 }
